@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cde-la-r <cde-la-r@student.42madrid>       +#+  +:+       +#+        */
+/*   By: astoll <astoll@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 04:50:42 by cde-la-r          #+#    #+#             */
-/*   Updated: 2023/11/03 09:21:31 by cde-la-r         ###   ########.fr       */
+/*   Created: 2023/11/20 12:49:59 by astoll            #+#    #+#             */
+/*   Updated: 2023/11/20 15:17:11 by astoll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,13 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stddef.h>
 
-size_t	ft_strlen(const char *str);
+int		ft_strlen(const char *s);
 char	*ft_strdup(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char *s1, const char *s2);
 char	*get_next_line(int fd);
-char	*read_line(char *line, int fd);
+char	*read_line(char *tail, int fd);
 char	*save_tail(char *line);
 
 #endif

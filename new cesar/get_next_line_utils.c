@@ -3,55 +3,70 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cde-la-r <cde-la-r@student.42madrid>       +#+  +:+       +#+        */
+/*   By: astoll <astoll@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 04:54:44 by cde-la-r          #+#    #+#             */
-/*   Updated: 2023/11/03 08:50:35 by cde-la-r         ###   ########.fr       */
+/*   Created: 2023/11/20 12:50:16 by astoll            #+#    #+#             */
+/*   Updated: 2023/11/20 15:38:21 by astoll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+int	ft_strlen(const char *s)
 {
-	size_t	len;
+	int	i;
 
-	if (!str)
+	i = 0;
+	if (!s)
+	{
 		return (0);
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
-}
-
-char	*ft_strdup(const char *s)
-{
-	char	*r;
-	size_t	l;
-
-	if (!s || !*s)
-		return (NULL);
-	l = ft_strlen(s);
-	r = (char *)malloc((l + 1) * sizeof(char));
-	if (!r)
-		return (NULL);
-	r[l] = '\0';
-	while (l--)
-		r[l] = s[l];
-	return (r);
+	}
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
 }
 
 char	*ft_strchr(const char *s, int c)
 {
 	if (!s)
-		return (NULL);
-	while (*s)
 	{
-		if (*s == (char)c)
-			return ((char *)s);
+		return (0);
+	}
+	while ((char)c != *s)
+	{
+		if (!*s)
+		{
+			return (0);
+		}
 		s++;
 	}
-	return (NULL);
+	return ((char *)s);
+}
+
+char	*ft_strdup(const char *s)
+{
+	char	*dest;
+	int		i;
+
+	if (!s || !*s)
+	{
+		return (0);
+	}
+	dest = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	i = 0;
+	if (!dest)
+	{
+		return (0);
+	}
+	while (s[i] != '\0')
+	{
+		dest[i] = s[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
 
 char	*ft_strjoin(char *s1, const char *s2)

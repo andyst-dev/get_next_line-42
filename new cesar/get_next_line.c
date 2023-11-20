@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: astoll <astoll@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 04:50:34 by cde-la-r          #+#    #+#             */
-/*   Updated: 2023/11/19 10:15:37 by astoll           ###   ########.fr       */
+/*   Created: 2023/11/20 12:49:41 by astoll            #+#    #+#             */
+/*   Updated: 2023/11/20 14:17:26 by astoll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,36 +22,37 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-char	*read_line(char *line, int fd)
+char	*read_line(char *tail, int fd)
 {
 	char	buffer[BUFFER_SIZE + 1];
 	ssize_t	nbytes;
 
-	while (!ft_strchr(line, '\n'))
+	while (!ft_strchr(tail, '\n'))
 	{
 		nbytes = read(fd, buffer, BUFFER_SIZE);
 		if (nbytes == 0)
 			break ;
 		if (nbytes == -1)
 		{
-			free(line);
+			free(tail);
 			return (NULL);
 		}
 		buffer[nbytes] = '\0';
-		line = ft_strjoin(line, buffer);
+		tail = ft_strjoin(tail, buffer);
 	}
-	return (line);
+	return (tail);
 }
 
 char	*save_tail(char *line)
 {
 	char	*next;
-	char	*tail;
+	char	*newtail;
 
 	next = ft_strchr(line, '\n');
-	if (!next++)
+	if (!next)
 		return (NULL);
-	tail = ft_strdup(next);
+	next++;
+	newtail = ft_strdup(next);
 	*next = '\0';
-	return (tail);
+	return (newtail);
 }

@@ -6,7 +6,7 @@
 /*   By: astoll <astoll@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:50:16 by astoll            #+#    #+#             */
-/*   Updated: 2023/11/21 08:36:09 by astoll           ###   ########.fr       */
+/*   Updated: 2023/11/21 17:58:58 by astoll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,26 +71,26 @@ char	*ft_strdup(const char *s)
 
 char	*ft_strjoin(char *s1, const char *s2)
 {
-	int		s1len;
-	int		s2len;
+	int		lens1;
+	int		lens2;
 	char	*dst;
 
 	if (!s1 && !s2)
 		return (NULL);
-	s1len = ft_strlen(s1);
-	s2len = ft_strlen(s2);
-	dst = (char *)malloc(sizeof(char) * (s1len + s2len + 1));
+	lens1 = ft_strlen(s1);
+	lens2 = ft_strlen(s2);
+	dst = (char *)malloc(sizeof(char) * (lens1 + lens2 + 1));
 	if (!dst)
 	{
 		if (s1)
 			free(s1);
 		return (NULL);
 	}
-	dst[s1len + s2len] = '\0';
-	while (s2len--)
-		dst[s1len + s2len] = s2[s2len];
-	while (s1len--)
-		dst[s1len] = s1[s1len];
+	dst[lens1 + lens2] = '\0';
+	while (lens2--)
+		dst[lens1 + lens2] = s2[lens2];
+	while (lens1--)
+		dst[lens1] = s1[lens1];
 	if (s1)
 		free(s1);
 	return (dst);

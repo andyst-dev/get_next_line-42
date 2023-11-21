@@ -6,23 +6,13 @@
 /*   By: astoll <astoll@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:49:41 by astoll            #+#    #+#             */
-/*   Updated: 2023/11/20 14:17:26 by astoll           ###   ########.fr       */
+/*   Updated: 2023/11/21 08:38:45 by astoll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*get_next_line(int fd)
-{
-	static char	*tail;
-	char		*line;
-
-	line = read_line(tail, fd);
-	tail = save_tail(line);
-	return (line);
-}
-
-char	*read_line(char *tail, int fd)
+static char	*read_line(char *tail, int fd)
 {
 	char	buffer[BUFFER_SIZE + 1];
 	ssize_t	nbytes;
@@ -43,7 +33,7 @@ char	*read_line(char *tail, int fd)
 	return (tail);
 }
 
-char	*save_tail(char *line)
+static char	*save_tail(char *line)
 {
 	char	*next;
 	char	*newtail;
@@ -55,4 +45,14 @@ char	*save_tail(char *line)
 	newtail = ft_strdup(next);
 	*next = '\0';
 	return (newtail);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*tail;
+	char		*line;
+
+	line = read_line(tail, fd);
+	tail = save_tail(line);
+	return (line);
 }

@@ -6,7 +6,7 @@
 /*   By: astoll <astoll@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:49:59 by astoll            #+#    #+#             */
-/*   Updated: 2023/11/20 15:17:11 by astoll           ###   ########.fr       */
+/*   Updated: 2023/11/21 08:40:49 by astoll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,11 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-int		ft_strlen(const char *s);
-char	*ft_strdup(const char *s);
-char	*ft_strchr(const char *s, int c);
-char	*ft_strjoin(char *s1, const char *s2);
 char	*get_next_line(int fd);
-char	*read_line(char *tail, int fd);
-char	*save_tail(char *line);
+
+char	*ft_strchr(const char *s, int c);
+char	*ft_strdup(const char *s);
+char	*ft_strjoin(char *s1, const char *s2);
+int		ft_strlen(const char *s);
 
 #endif

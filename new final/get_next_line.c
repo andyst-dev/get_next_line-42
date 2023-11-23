@@ -6,30 +6,35 @@
 /*   By: astoll <astoll@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:49:41 by astoll            #+#    #+#             */
-/*   Updated: 2023/11/21 08:38:45 by astoll           ###   ########.fr       */
+/*   Updated: 2023/11/23 13:35:49 by astoll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*read_line(char *tail, int fd)
+static char	*read_line(int fd, char *tail)
 {
-	char	buffer[BUFFER_SIZE + 1];
+	char	*buf;
 	ssize_t	nbytes;
 
+	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
+		return (NULL);
 	while (!ft_strchr(tail, '\n'))
 	{
-		nbytes = read(fd, buffer, BUFFER_SIZE);
+		nbytes = read(fd, buf, BUFFER_SIZE);
 		if (nbytes == 0)
 			break ;
 		if (nbytes == -1)
 		{
+			free(buf);
 			free(tail);
 			return (NULL);
 		}
-		buffer[nbytes] = '\0';
-		tail = ft_strjoin(tail, buffer);
+		buf[nbytes] = '\0';
+		tail = ft_strjoin(tail, buf);
 	}
+	free(buf);
 	return (tail);
 }
 
@@ -52,7 +57,7 @@ char	*get_next_line(int fd)
 	static char	*tail;
 	char		*line;
 
-	line = read_line(tail, fd);
+	line = read_line(fd, tail);
 	tail = save_tail(line);
 	return (line);
 }

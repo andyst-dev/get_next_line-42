@@ -6,7 +6,7 @@
 /*   By: astoll <astoll@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 08:10:33 by astoll            #+#    #+#             */
-/*   Updated: 2023/11/18 14:18:50 by astoll           ###   ########.fr       */
+/*   Updated: 2023/11/23 14:07:03 by astoll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*ft_strdup(const char *s1)
 	return (dest);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
 	int		i;
 	int		j;
@@ -84,7 +84,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (dst);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
 	size_t	slen;
 	char	*str;

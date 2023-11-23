@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astoll <astoll@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:50:16 by astoll            #+#    #+#             */
-/*   Updated: 2023/11/21 17:58:58 by astoll           ###   ########.fr       */
+/*   Updated: 2023/11/23 14:07:53 by astoll           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int	ft_strlen(const char *s)
 {
@@ -54,7 +54,7 @@ char	*ft_strdup(const char *s)
 	{
 		return (0);
 	}
-	dest = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	dest = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
 	i = 0;
 	if (!dest)
 	{

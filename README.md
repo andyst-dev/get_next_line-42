@@ -1,9 +1,9 @@
 # get_next_line
 
 A custom line-reading function developed as part of the 42 curriculum.
-This project consists of implementing a function that reads and returns one line at a time from a file descriptor, while preserving the unread remainder between calls.
+`get_next_line` is a small C function that reads from a file descriptor and returns one line at a time while keeping the unread remainder between calls.
 
-`get_next_line` was designed to strengthen core C skills around file descriptor I/O, dynamic memory management, and the use of static variables to maintain state across function calls.
+It was a good way to build solid foundations in file descriptor I/O, dynamic memory management and the use of static variables to preserve state between function calls.
 
 ## Features
 - Reads a file or input stream line by line
@@ -20,7 +20,7 @@ This project consists of implementing a function that reads and returns one line
 - `get_next_line_utils_bonus.c` — helper functions for the bonus part
 
 ## Mandatory part
-The mandatory part implements the core `get_next_line` function required by the subject.
+The mandatory part focuses on the line-reading logic required to return one line at a time from a file descriptor.
 
 ### Main function
 - `get_next_line` — reads from a file descriptor and returns the next available line, including the trailing newline when present
@@ -53,11 +53,11 @@ cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 get_next_line_bonus.c get_next_line_u
 ```
 
 ## Notes
-This project is not meant to build a standalone executable by itself.
-It provides source files to be compiled and used inside a test program or another C project.
+This project does not build a standalone executable on its own.
+It provides source files meant to be compiled and used inside a test program or another C project.
 
 ## Learning outcomes
-This project was an introduction to stateful file reading in C.
+This project was my first real introduction to stateful file reading in C.
 It helped build solid foundations in:
 - file descriptor handling
 - buffered reading with `read`
